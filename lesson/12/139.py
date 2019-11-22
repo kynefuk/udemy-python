@@ -1,10 +1,22 @@
+import os
 import sqlalchemy
 import sqlalchemy.ext.declarative
 import sqlalchemy.orm
 
-engine = sqlalchemy.create_engine('sqlite:///:memory:', echo=True)
+from dotenv import load_dotenv
+
+
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.env')
+
+load_dotenv(dotenv_path)
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+engine = sqlalchemy.create_engine(DATABASE_URL, echo=True)
 
 Base = sqlalchemy.ext.declarative.declarative_base()
+
+# クラスとしてテーブルを定義する
 
 
 class Person(Base):
