@@ -1,8 +1,9 @@
 import logging
 
 # loggerはlesson-122.pyのloggingの設定が受け継がれる
-# 各ファイルごとにloggerを作り、ログレベル等を設定する必要がある
+# 各ファイルごとにloggerを作り、ログレベル等を設定する
 # __name__でファイル名をロガー名として設定
+# INFO: ファイル名: ログメッセージ という形式でログ出力される
 logger = logging.getLogger(__name__)
 
 
