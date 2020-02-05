@@ -4,7 +4,7 @@ import random
 from Crypto.Cipher import AES
 
 # 暗号化する際にブロック単位で処理を行う(AES.block_size は16byte)
-# 暗号化のキーを生成
+# 16文字の暗号化のキーが必要となる
 key = ''.join(
     random.choice(string.ascii_letters) for _ in range(AES.block_size)
 )
@@ -32,5 +32,5 @@ with open('enc.dat', 'rb') as e:
 
     print(decrypted_text)
     print(decrypted_text[-1])
-    # decrypted_text[:-1]みたいな形式になる
-    print(decrypted_text[:-decrypted_text[-1]])
+    # 先頭からパディングで追加した文字列の前まで取得する
+    print(decrypted_text[: -decrypted_text[-1]])
